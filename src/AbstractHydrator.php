@@ -80,8 +80,17 @@ abstract class AbstractHydrator implements
      */
     public function hasStrategy($name)
     {
-        return array_key_exists($name, $this->strategies)
-               || array_key_exists('*', $this->strategies);
+        if ($this->strategies->offsetExists($name)) {
+            return true;
+        }
+
+        if ($this->hasNamingStrategy()
+            && $this->strategies->offsetExists($this->getNamingStrategy()->hydrate($name))
+        ) {
+            return true;
+        }
+
+        return $this->strategies->offsetExists('*');
     }
 
     /**

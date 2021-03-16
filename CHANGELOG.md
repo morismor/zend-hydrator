@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.2.0 - 2021-03-16
+
+### Fixed
+`Zend\Hydrator\AbstractHydrator::hasStrategy` fix accessing an object as an array
+
 ## 1.1.0 - 2016-02-18
 
 ### Added
